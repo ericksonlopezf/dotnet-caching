@@ -1,0 +1,22 @@
+<!-- Copyright © Erickson Lopez. MIT License. -->
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFrameworks>net8.0;net9.0;net10.0</TargetFrameworks>
+    <RootNamespace>EricksonLopez.Caching.AotSmokeTest</RootNamespace>
+    <AssemblyName>EricksonLopez.Caching.AotSmokeTest</AssemblyName>
+    <Nullable>enable</Nullable>
+    <PublishAot>true</PublishAot>
+    <IsTestProject>false</IsTestProject>
+    <IsPackable>false</IsPackable>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\EricksonLopez.Caching\EricksonLopez.Caching.csproj" />
+    <ProjectReference Include="..\..\src\EricksonLopez.Caching.Redis\EricksonLopez.Caching.Redis.csproj" />
+  </ItemGroup>
+
+</Project>

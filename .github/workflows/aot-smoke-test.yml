@@ -1,0 +1,61 @@
+# Copyright © Erickson Lopez. MIT License.
+name: NativeAOT Smoke Test
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+env:
+  DOTNET_NOLOGO: true
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
+
+jobs:
+  aot-smoke-test:
+    name: NativeAOT Smoke Test
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@67a3573c9a986a3f9c594539f4ab511d57bb3ce9 # v4.3.1
+        with:
+          dotnet-version: "10.0.x"
+
+      - name: Install NativeAOT Prerequisites
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends clang lld zlib1g-dev
+
+      - name: Restore Dependencies
+        run: dotnet restore EricksonLopez.Caching.slnx
+
+      - name: Publish AotSmokeTest (NativeAOT)
+        run: >
+          dotnet publish
+          tests/EricksonLopez.Caching.AotSmokeTest/EricksonLopez.Caching.AotSmokeTest.csproj
+          --configuration Release
+          --runtime linux-x64
+          --self-contained
+          -p:PublishAot=true
+          -p:TargetFramework=net10.0
+          --output ./aot-output
+
+      - name: Run NativeAOT Binary
+        run: |
+          chmod +x ./aot-output/EricksonLopez.Caching.AotSmokeTest
+          ./aot-output/EricksonLopez.Caching.AotSmokeTest
+          echo "AOT Smoke Test exited with code: $?"
+
+      - name: Upload AOT Artifacts (On Failure)
+        if: failure()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: aot-output-${{ github.run_id }}
+          path: ./aot-output/
+          retention-days: 7

@@ -1,0 +1,14 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/EricksonLopez.Caching/EricksonLopez.Caching.csproj" />
+    <Project Path="src/EricksonLopez.Caching.Redis/EricksonLopez.Caching.Redis.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/EricksonLopez.Caching.Tests/EricksonLopez.Caching.Tests.csproj" />
+    <Project Path="tests/EricksonLopez.Caching.Redis.Tests/EricksonLopez.Caching.Redis.Tests.csproj" />
+    <Project Path="tests/EricksonLopez.Caching.AotSmokeTest/EricksonLopez.Caching.AotSmokeTest.csproj" />
+  </Folder>
+  <Folder Name="/samples/">
+    <Project Path="samples/EricksonLopez.Caching.Sample/EricksonLopez.Caching.Sample.csproj" />
+  </Folder>
+</Solution>

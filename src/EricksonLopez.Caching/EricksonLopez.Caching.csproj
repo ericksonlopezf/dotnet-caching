@@ -1,0 +1,26 @@
+<!-- Copyright © Erickson Lopez. MIT License. -->
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net8.0;net9.0;net10.0</TargetFrameworks>
+    <AssemblyName>EricksonLopez.Caching</AssemblyName>
+    <RootNamespace>EricksonLopez.Caching</RootNamespace>
+    <PackageId>EricksonLopez.Caching</PackageId>
+    <Description>High-performance in-memory and hybrid multi-tier caching engine for .NET. Features stampede protection via keyed synchronization, absolute/sliding TTLs, prefix eviction, and 100% Native AOT compatibility.</Description>
+    <PackageTags>$(CommonPackageTags);memory-cache;hybrid-cache;multi-tier;l1-cache;stampede-protection;single-flight;cache-invalidation;tag-invalidation;sliding-expiration;multi-tenancy;opentelemetry</PackageTags>
+    <IsPackable>true</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="EricksonLopez.Result" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" />
+    <PackageReference Include="Microsoft.Extensions.Options" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="EricksonLopez.Caching.Tests" />
+    <InternalsVisibleTo Include="DynamicProxyGenAssembly2" />
+  </ItemGroup>
+
+</Project>

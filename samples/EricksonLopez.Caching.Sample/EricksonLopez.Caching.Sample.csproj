@@ -1,0 +1,32 @@
+<!-- Copyright © Erickson Lopez. MIT License. -->
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFrameworks></TargetFrameworks>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <IsPackable>false</IsPackable>
+    <!--
+      Showcase-specific suppressions:
+      CA1861 - inline array literals are acceptable in a pedagogical sample
+      CA1859 - interface casting is intentional (demonstrates API surface contracts)
+      CA1822 - FakeConnectionMultiplexer implements an interface; static not applicable
+      IL2026/IL3050 - Base64CacheSerializer uses reflection JSON in a non-AOT sample project
+    -->
+    <NoWarn>$(NoWarn);CA1861;CA1859;CA1822;IL2026;IL3050</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\EricksonLopez.Caching\EricksonLopez.Caching.csproj" />
+    <ProjectReference Include="..\..\src\EricksonLopez.Caching.Redis\EricksonLopez.Caching.Redis.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" />
+    <PackageReference Include="Microsoft.Extensions.Options" />
+  </ItemGroup>
+
+</Project>

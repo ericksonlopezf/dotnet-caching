@@ -1,0 +1,30 @@
+{
+  "$schema": "https://raw.githubusercontent.com/stryker-mutator/stryker-net/master/src/Stryker.Core/Stryker.Core/stryker-config.schema.json",
+  "stryker-config": {
+    "project": "EricksonLopez.Caching.Redis.csproj",
+    "reporters": [
+      "Progress",
+      "ClearText",
+      "Html",
+      "Json"
+    ],
+    "verbosity": "info",
+    "mutation-level": "Standard",
+    "coverage-analysis": "perTest",
+    "concurrency": 2,
+    "thresholds": {
+      "high": 100,
+      "low": 98,
+      "break": 95
+    },
+    "ignore-methods": [
+      "ConfigureAwait",
+      "*RecordHit*",
+      "*RecordMiss*",
+      "*RecordStampedePrevented*",
+      "*RecordEviction*",
+      "*RecordError*",
+      "*Log*"
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+<!-- Copyright © Erickson Lopez. MIT License. -->
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net8.0;net9.0;net10.0</TargetFrameworks>
+    <AssemblyName>EricksonLopez.Caching.Redis</AssemblyName>
+    <RootNamespace>EricksonLopez.Caching.Redis</RootNamespace>
+    <PackageId>EricksonLopez.Caching.Redis</PackageId>
+    <Description>Redis L2 cache provider for EricksonLopez.Caching. Uses StackExchange.Redis for distributed caching with stampede protection via Lua scripts and prefix-based eviction. 100% Native AOT compatible.</Description>
+    <PackageTags>$(CommonPackageTags);redis;distributed-cache;l2-cache;stackexchange-redis;stampede-protection;cache-invalidation;tag-invalidation;resilience</PackageTags>
+    <IsPackable>true</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EricksonLopez.Caching\EricksonLopez.Caching.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="EricksonLopez.Result" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" />
+    <PackageReference Include="Microsoft.Extensions.Options" />
+    <PackageReference Include="StackExchange.Redis" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="EricksonLopez.Caching.Redis.Tests" />
+    <InternalsVisibleTo Include="DynamicProxyGenAssembly2" />
+  </ItemGroup>
+
+</Project>
